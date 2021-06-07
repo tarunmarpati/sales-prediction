@@ -8,7 +8,7 @@ import joblib
 
 model = pickle.load(open('model.pkl','rb'))
 #label encoding
-    d = joblib.load('enc.sav')
+d = joblib.load('enc.sav')
 
 def predict(df):
     cols_when_model_builds = model.get_booster().feature_names
