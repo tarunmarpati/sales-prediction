@@ -7,7 +7,8 @@ import joblib
 
 
 model = pickle.load(open('model.pkl','rb'))
-df = pd.read_csv("E:\\salespred\\sales.csv")
+#label encoding
+    d = joblib.load('enc.sav')
 
 def predict(df):
     cols_when_model_builds = model.get_booster().feature_names
@@ -25,8 +26,7 @@ def predict(df):
     salesdata['Item_Fat_Content'].value_counts()
     salesdata.replace({'Item_Fat_Content': {'low fat':'Low Fat','LF':'Low Fat', 'reg':'Regular'}}, inplace=True)
     salesdata['Item_Fat_Content'].value_counts()
-    #label encoding
-    d = joblib.load('enc.sav')
+    
 
     for i in d:
       encoder = LabelEncoder()
@@ -36,6 +36,3 @@ def predict(df):
     salesdata=salesdata.iloc[0:,:];
     predictions = model.predict(salesdata)
     return list(predictions)
-
-
-print(predict(df))
