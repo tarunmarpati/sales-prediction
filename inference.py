@@ -35,4 +35,4 @@ def predict(df):
 
     salesdata=salesdata.iloc[0:,:];
     predictions = model.predict(salesdata)
-    return list(predictions)
+    return str(list(predictions))
